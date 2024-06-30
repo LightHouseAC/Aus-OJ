@@ -27,6 +27,11 @@ public class SubmissionResult implements Serializable {
     private Long uid;
 
     /**
+     * 题号
+     */
+    private Long problemId;
+
+    /**
      * 0-已提交,1-判题中,2-判题完成
      */
     private Integer status;
@@ -83,6 +88,7 @@ public class SubmissionResult implements Serializable {
         SubmissionResult other = (SubmissionResult) that;
         return (this.getResultId() == null ? other.getResultId() == null : this.getResultId().equals(other.getResultId()))
             && (this.getUid() == null ? other.getUid() == null : this.getUid().equals(other.getUid()))
+            && (this.getProblemId() == null ? other.getProblemId() == null : this.getProblemId().equals(other.getProblemId()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getResult() == null ? other.getResult() == null : this.getResult().equals(other.getResult()))
             && (this.getLanguage() == null ? other.getLanguage() == null : this.getLanguage().equals(other.getLanguage()))
@@ -99,6 +105,7 @@ public class SubmissionResult implements Serializable {
         int result = 1;
         result = prime * result + ((getResultId() == null) ? 0 : getResultId().hashCode());
         result = prime * result + ((getUid() == null) ? 0 : getUid().hashCode());
+        result = prime * result + ((getProblemId() == null) ? 0 : getProblemId().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getResult() == null) ? 0 : getResult().hashCode());
         result = prime * result + ((getLanguage() == null) ? 0 : getLanguage().hashCode());
@@ -118,6 +125,7 @@ public class SubmissionResult implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", resultId=").append(resultId);
         sb.append(", uid=").append(uid);
+        sb.append(", problemId=").append(problemId);
         sb.append(", status=").append(status);
         sb.append(", result=").append(result);
         sb.append(", language=").append(language);

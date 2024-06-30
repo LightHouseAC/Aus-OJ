@@ -7,6 +7,7 @@
     <resultMap id="BaseResultMap" type="com.aus.ausoj.model.entity.SubmissionResult">
             <id property="resultId" column="result_id" jdbcType="BIGINT"/>
             <result property="uid" column="uid" jdbcType="BIGINT"/>
+            <result property="problemId" column="problem_id" jdbcType="BIGINT"/>
             <result property="status" column="status" jdbcType="TINYINT"/>
             <result property="result" column="result" jdbcType="VARCHAR"/>
             <result property="language" column="language" jdbcType="VARCHAR"/>
@@ -18,9 +19,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        result_id,uid,status,
-        result,language,code,
-        judge_info,deleted,created_at,
-        updated_at
+        result_id,uid,problem_id,
+        status,result,language,
+        code,judge_info,deleted,
+        created_at,updated_at
     </sql>
 </mapper>

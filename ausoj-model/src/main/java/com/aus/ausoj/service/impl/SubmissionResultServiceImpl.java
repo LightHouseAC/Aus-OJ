@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author recww
 * @description 针对表【submission_result】的数据库操作Service实现
-* @createDate 2024-06-27 23:40:53
+* @createDate 2024-06-28 08:39:58
 */
 @Service
 public class SubmissionResultServiceImpl extends ServiceImpl<SubmissionResultMapper, SubmissionResult>

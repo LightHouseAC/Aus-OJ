@@ -26,6 +26,7 @@
         result_id  bigint auto_increment
             primary key,
         uid        bigint                              not null comment '提交的用户',
+        problem_id bigint                              not null comment '题号',
         status     tinyint                             not null comment '0-已提交,1-判题中,2-判题完成',
         result     varchar(256)                        not null comment 'AC/WA/CE/RE/TLE/MLE,etc',
         language   varchar(256)                        not null comment '代码语言',
@@ -36,13 +37,16 @@
         updated_at timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP
     );
     
+    create index submission_result_problem_index
+        on submission_result (problem_id);
+    
     create index submission_result_uid_index
         on submission_result (uid);
     
-    create index submission_result_uid_result_id_index
-        on submission_result (uid, result_id);
+    create index submission_result_user_problem_index
+        on submission_result (uid, problem_id);
     ```
-    索引：提交用户, (提交用户 + 题号)
+    索引：提交用户, 题号, (提交用户 + 题号)
 
 3. ##### 题目表
     ```sql
@@ -53,7 +57,7 @@
         title        varchar(256)                        not null comment '题目名',
         content      text                                not null comment '题目描述',
         std          text                                null comment '题解和std',
-        `limit`      varchar(1024)                       null comment '限制',
+        `limit`      varchar(1024)                       not null comment '限制',
         tags         varchar(1024)                       null comment '题目标签',
         sample_case  text                                null comment '样例',
         judge_case   text                                not null comment '测试数据',
